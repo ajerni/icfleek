@@ -5,15 +5,15 @@
   var displayWert = "...getting current state...";
   var inputValue = "";
 
+  $: wert = inputValue; //dynamically processd value (geht auch mit ganzen code blocks etc.)
+
   const getWert =  async () => {
     const res = await counter.getWert();
     displayWert = res.toString();
   }
 
-  const setWert = async (event) => {
+  const setWert = async () => {
     displayWert = "...saving new state...";
-    //const result = await counter.setWert({inputValue});
-    const wert = document.getElementById("wert").value.toString(); //weil inputValue binding nicht funktioniert
     const result = await counter.setWert(wert);
     displayWert = result.toString();
   }
